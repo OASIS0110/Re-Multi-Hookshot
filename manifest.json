@@ -1,0 +1,22 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Re:Multi Hookshot",
+    "description": "あれが軽くなって帰ってきた！\n\nMade by §bOASIS§f / §6mc0110",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 16, 100],
+    "uuid": "a1fe6d20-39a8-4157-abb2-8bda1e205ec9"
+  },
+  "modules": [
+    {
+      "type": "data",
+      "description": "",
+      "version": [1, 0, 0],
+      "uuid": "310a0b86-3d55-465d-8e26-28326d8be9dd"
+    }
+  ],
+  "metadata": {
+    "url": "https://www.youtube.com/channel/UCReGrmBZ0ZR1UE1qe_5lkqA?view_as=subscriber",
+    "license": "MIT License"
+  }
+}
