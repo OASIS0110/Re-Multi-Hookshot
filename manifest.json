@@ -2,14 +2,14 @@
   "format_version": 2,
   "header": {
     "name": "Re Multi Hookshot",
-    "description": "あれが軽くなって帰ってきた！\n\nMade by §bOASIS §f/ §6mc0110",
+    "description": "フックショットが強化されて帰ってきた！\n\nMade by §bOASIS §f/ §6mc0110",
     "uuid": "69e5e8f1-6032-4753-98eb-29c9ca807f93",
     "version": [ 1, 0, 0 ],
     "min_engine_version": [ 1, 16, 100 ]
   },
   "modules": [
     {
-      "description": "あれが軽くなって帰ってきた！\n\nMade by §bOASIS §f/ §6mc0110",
+      "description": "",
       "type": "data",
       "uuid": "76d7d2e0-f9cc-4ec1-a83a-7f15846725d6",
       "version": [ 1, 0, 0 ]
