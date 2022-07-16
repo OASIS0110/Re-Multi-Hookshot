@@ -8,55 +8,7 @@
       "is_experimental": false,
       "runtime_identifier": "minecraft:snowball"
     },
-    "component_groups": {
-      "minecraft:hard_arrow": {
-        "minecraft:projectile": {
-          "on_hit": {
-            "stick_in_ground": {
-              "shake_time" : 0.35
-            },
-            "arrow_effect": {
-            }
-          },
-          "hit_sound": "bow.hit",
-          "power": 2,
-          "gravity": 0.05,
-          "uncertainty_base": 16,
-          "uncertainty_multiplier": 4,
-          "anchor": 1,
-          "should_bounce": true,
-          "offset": [ 0, -0.1, 0 ]
-        }
-      },
-
-      "minecraft:player_arrow": {
-        "minecraft:projectile": {
-          "on_hit": {
-            "impact_damage": {
-              "damage": 0,
-              "knockback": true,
-              "semi_random_diff_damage": true,
-              "destroy_on_hit": true,
-              "power_multiplier": 0.97
-            },
-            "stick_in_ground": {
-              "shake_time" : 0.35
-            },
-            "arrow_effect": {
-            }
-          },
-          "hit_sound": "bow.hit",
-          "power": 5.0,
-          "gravity": 0.05,
-          "uncertainty_base": 1,
-          "uncertainty_multiplier": 0,
-          "anchor": 1,
-          "should_bounce": true,
-          "offset": [ 0, -0.1, 0 ]
-        }
-      }
-    },
-
+    "component_groups": {},
     "components": {
       "minecraft:collision_box": {
         "width": 0.25,
@@ -65,7 +17,12 @@
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
           {
-            "filters": { "test": "in_lava", "subject": "self", "operator": "==", "value": true },
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
             "cause": "lava",
             "damage_per_tick": 4
           }
@@ -74,15 +31,17 @@
       "minecraft:projectile": {
         "on_hit": {
           "impact_damage": {
-            "damage": [ 1, 4 ],
-            "knockback": true,
+            "knockback": false,
             "semi_random_diff_damage": false,
             "destroy_on_hit": true
           },
           "stick_in_ground": {
-            "shake_time" : 0.35
+            "shake_time": 0.35
           },
-          "arrow_effect": {
+          "arrow_effect": {},
+          "definition_event": {
+            "impact_target": true,
+            "event_trigger": "EntityHit"
           }
         },
         "hit_sound": "bow.hit",
@@ -92,10 +51,24 @@
         "uncertainty_multiplier": 4,
         "anchor": 1,
         "should_bounce": true,
-        "offset": [ 0, -0.1, 0 ]
+        "offset": [
+          0,
+          -0.1,
+          0
+        ]
       },
-      "minecraft:physics": {
+      "minecraft:rideable": {
+        "seat_count": 1,
+        "interact_text": "action.interact.ride.minecart",
+        "seats": {
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
       },
+      "minecraft:physics": {},
       "minecraft:pushable": {
         "is_pushable": false,
         "is_pushable_by_piston": true
@@ -108,31 +81,18 @@
         }
       }
     },
-
     "events": {
-      "minecraft:entity_spawned": {
+      "EntityHit": {
         "sequence": [
           {
-            "filters": {"test": "is_difficulty", "value": "hard"},
-            "add": {
-              "component_groups": [ "minecraft:hard_arrow" ]
-            }
-          },
-          {
-            "filters": {"test": "is_family", "subject": "other", "value": "player"},
-            "add": {
-              "component_groups" : [ "minecraft:player_arrow" ]
-            }
-          },
-          {
-            "filters": {"test": "is_family", "subject": "other", "value": "pillager"},
-            "add": {
-              "component_groups": [ "minecraft:pillager_arrow" ]
+            "run_command": {
+              "command": [
+                "function on_hit"
+              ]
             }
           }
         ]
       }
     }
-
   }
 }
