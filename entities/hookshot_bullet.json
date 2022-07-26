@@ -17,7 +17,7 @@
       },
       "kill_timer": {
         "minecraft:timer": {
-          "time": 5,
+          "time": 2.0,
           "time_down_event": {
             "event": "hookshot:time_up"
           }
@@ -25,7 +25,7 @@
       },
       "process_delay": {
         "minecraft:timer": {
-          "time": 0.2,
+          "time": 0.0,
           "time_down_event": {
             "event": "hookshot:hit_process"
           }
@@ -72,7 +72,7 @@
           },
           "arrow_effect": {},
           "definition_event": {
-            "impact_target": false,
+            "impact_target": true,
             "event_trigger": {
               "event": "hookshot:hit",
               "taget": "self"
@@ -80,7 +80,7 @@
           }
         },
         "hit_sound": "bow.hit",
-        "power": 5,
+        "power": 6,
         "gravity": 0.0,
         "uncertainty_base": 0,
         "uncertainty_multiplier": 0,
