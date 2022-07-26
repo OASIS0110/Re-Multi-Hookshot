@@ -13,20 +13,6 @@
       "type": "data",
       "uuid": "76d7d2e0-f9cc-4ec1-a83a-7f15846725d6",
       "version": [ 1, 0, 0 ]
-    },
-    {
-      "description": "",
-      "type": "script",
-      "language": "javascript",
-      "uuid": "ad5fbcc9-569f-464a-a032-77d493ba9131",
-      "version": [1, 0, 0 ],
-      "entry": "scritps/index.js"
-    }
-  ],
-  "dependencies": [
-    {
-      "uuid": "b26a4d4c-afdf-4690-88f8-931846312678",//mojang-minecraft
-      "version": [0, 1, 0]
     }
   ]
 }
