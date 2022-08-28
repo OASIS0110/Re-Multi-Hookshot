@@ -10,33 +10,34 @@
     },
 
     "component_groups": {
-      "instant_despawn": {
+      "hookshot:instant_kill": {
         "minecraft:instant_despawn": {
           "remove_child_entities": false
         }
       },
       "kill_timer": {
         "minecraft:timer": {
-          "time": 5,
+          "time": 2,
           "time_down_event": {
             "event": "hookshot:time_up"
           }
         }
       },
       "process_delay": {
-        "minecraft:timer": {
-          "time": 0.2,
-          "time_down_event": {
-            "event": "hookshot:hit_process"
-          }
+        "minecraft:environment_sensor": {
+          "triggers": [
+            {
+              "event": "hookshot:hit_process"
+            }
+          ]
         }
       }
     },
 
     "components": {
       "minecraft:collision_box": {
-        "width": 0.0,
-        "height": 0.0
+        "width": 0.25,
+        "height": 0.25
       },
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
@@ -88,6 +89,13 @@
         "should_bounce": true,
         "offset": [0, 0.3, 0 ]
       },
+      "minecraft:entity_sensor": {
+        "sensor_range": 1.0,
+        "relative_range": true,
+        "minimum_count": 1,
+        "maximum_count": 1,
+        "event": "hookshot:entity_hit"
+      },
       "minecraft:pushable": {
         "is_pushable": false,
         "is_pushable_by_piston": true
@@ -137,26 +145,30 @@
       "hookshot:hit_process": {
         "sequence": [
           {
-            "remove": {
-              "component_groups": [
-                "process_delay"
-              ]
-            }
-          },
-          {
             "run_command": {
               "command": [
-                "function BlockHit"
+                "tag @s remove AirDetect",
+                "execute @s ~~~ detect ~0.3~~ air 0 execute @s ~~~ detect ~-0.3~~ air 0 execute @s ~~~ detect ~~0.3~ air 0 execute @s ~~~ detect ~~-0.3~ air 0 execute @s ~~~ detect ~~~0.3 air 0 execute @s ~~~ detect ~~~-0.3 air 0 tag @s add AirDetect",
+                "tag @s[tag=!AirDetect] add BulletBlockHit"
               ]
             }
           }
         ]
       },
+      //entity hit
+      "hookshot:entity_hit": {
+        "run_command": {
+          "command": [
+            "say entityにhitした"
+          ],
+          "target": "other" 
+        }
+      },
       //instant kill
       "hookshot:instant_kill": {
         "add": {
           "component_groups": [
-            "instant_despawn"
+            "hookshot:instant_kill"
           ]
         }
       },

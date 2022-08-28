@@ -17,7 +17,7 @@
             "minecraft:max_stack_size": 1,
             "minecraft:on_use": {
                 "on_use": {
-                    "condition": "",
+                    "condition": "query.scoreboard('HookshotLink') == 0",
                     "event": "hookshot:use_item",
                     "target": "self"
                 }

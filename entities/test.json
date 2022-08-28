@@ -1,0 +1,117 @@
+{
+  "format_version": "1.16.210",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "re_hookshot:hookshot_seat_summon",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+
+    "component_groups": {
+      "summon_seat": {
+        "minecraft:spawn_entity": {
+          "entities": [
+            {
+              "max_wait_time": 1,
+              "min_wait_time": 1,
+              "num_to_spawn": 1,
+              "single_use": true,
+              "spawn_entity": "re_hookshot:hookshot_seat",
+              "spawn_event": "minecraft:entity_spawned"
+            }
+          ]
+        }
+      },
+      "hookshot:instant_kill": {
+        "minecraft:instant_despawn": {
+          "remove_child_entities": false
+        }
+      }
+    },
+
+    "components": {
+      "minecraft:type_family": {
+        "family": [ "armor_stand", "inanimate", "mob" ]
+      },
+      "minecraft:collision_box": {
+        "width": 0.25,
+        "height": 0.25
+      },
+      "minecraft:health": {
+        "value": 6,
+        "max": 6
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": { "test": "in_lava", "subject": "self", "operator": "==", "value": true },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:knockback_resistance": {
+        "value": 1.0
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/entities/armor_stand.json"
+      },
+      "minecraft:nameable": {
+      },
+      "minecraft:persistent": {
+      },
+      "minecraft:physics": {
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:damage_sensor":{
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": false
+          }
+        ]
+      },
+      "minecraft:conditional_bandwidth_optimization": {
+      }
+    },
+
+    "events": {
+      //entity spawned
+      "minecraft:entity_spawned": {
+        "sequence": [
+          {
+            "run_command": {
+              "command": [
+                "tag @s add HookshotSeatSummon",
+                "tag @s add Hookshot",
+                "tp @s ~~~ facing @e[tag=HookshotCore,scores={HookshotTemp=0},c=1]"
+              ]
+            }
+          },
+          {
+            "add": {
+              "component_groups": [
+                "summon_seat"
+              ]
+            }
+          }
+        ]
+      },
+      "hookshot:instant_kill": {
+        "sequence": [
+          {
+            "add": {
+              "component_groups": [
+                "hookshot:instant_kill"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}
