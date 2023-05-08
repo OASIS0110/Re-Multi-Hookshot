@@ -14,23 +14,6 @@
         "minecraft:instant_despawn": {
           "remove_child_entities": false
         }
-      },
-      "kill_timer": {
-        "minecraft:timer": {
-          "time": 2,
-          "time_down_event": {
-            "event": "hookshot:time_up"
-          }
-        }
-      },
-      "process_delay": {
-        "minecraft:environment_sensor": {
-          "triggers": [
-            {
-              "event": "hookshot:hit_process"
-            }
-          ]
-        }
       }
     },
 
@@ -39,28 +22,14 @@
         "width": 0.25,
         "height": 0.25
       },
-      "minecraft:hurt_on_condition": {
-        "damage_conditions": [
-          {
-            "filters": {
-              "test": "in_lava",
-              "subject": "self",
-              "operator": "==",
-              "value": true
-            },
-            "cause": "lava",
-            "damage_per_tick": 4
-          }
-        ]
-      },
-      "minecraft:damage_sensor":{
-        "triggers": [
-          {
-            "cause": "all",
-            "deals_damage": false
-          }
-        ]
-      },
+			"minecraft:damage_sensor": {
+				"triggers":[
+					{
+						"cause": "all",
+						"deal_damage": false
+					}
+				]
+			},
       "minecraft:projectile": {
         "on_hit": {
           "impact_damage": {
@@ -71,14 +40,7 @@
           "stick_in_ground": {
             "shake_time": 0.35
           },
-          "arrow_effect": {},
-          "definition_event": {
-            "impact_target": false,
-            "event_trigger": {
-              "event": "hookshot:hit",
-              "taget": "self"
-            }
-          }
+          "arrow_effect": {}
         },
         "hit_sound": "bow.hit",
         "power": 5,
@@ -88,13 +50,6 @@
         "anchor": 1,
         "should_bounce": true,
         "offset": [0, 0.3, 0 ]
-      },
-      "minecraft:entity_sensor": {
-        "sensor_range": 1.0,
-        "relative_range": true,
-        "minimum_count": 1,
-        "maximum_count": 1,
-        "event": "hookshot:entity_hit"
       },
       "minecraft:pushable": {
         "is_pushable": false,
@@ -113,79 +68,11 @@
       "minecraft:entity_spawned": {
         "sequence": [
           {
-            "add": {
-              "component_groups": [
-                "kill_timer"
-              ]
-            }
-          },
-          {
             "run_command": {
               "command": [
                 "tag @s add HookshotBullet",
                 "tag @s add Hookshot"
               ]
-            }
-          }
-        ]
-      },
-      //hit
-      "hookshot:hit": {
-        "sequence": [
-          {
-            "add": {
-              "component_groups": [
-                "process_delay"
-              ]
-            }
-          }
-        ]
-      },
-      //hit process
-      "hookshot:hit_process": {
-        "sequence": [
-          {
-            "run_command": {
-              "command": [
-                "tag @s remove AirDetect",
-                "execute @s ~~~ detect ~0.3~~ air 0 execute @s ~~~ detect ~-0.3~~ air 0 execute @s ~~~ detect ~~0.3~ air 0 execute @s ~~~ detect ~~-0.3~ air 0 execute @s ~~~ detect ~~~0.3 air 0 execute @s ~~~ detect ~~~-0.3 air 0 tag @s add AirDetect",
-                "tag @s[tag=!AirDetect] add BulletBlockHit"
-              ]
-            }
-          }
-        ]
-      },
-      //entity hit
-      "hookshot:entity_hit": {
-        "run_command": {
-          "command": [
-            "say entityにhitした"
-          ],
-          "target": "other" 
-        }
-      },
-      //instant kill
-      "hookshot:instant_kill": {
-        "add": {
-          "component_groups": [
-            "hookshot:instant_kill"
-          ]
-        }
-      },
-      //times up
-      "hookshot:time_up": {
-        "sequence": [
-          {
-            "run_command": {
-              "command": [
-                "function Reset"
-              ]
-            }
-          },
-          {
-            "trigger": {
-              "event": "hookshot:instant_kill",
-              "target": "self"
             }
           }
         ]

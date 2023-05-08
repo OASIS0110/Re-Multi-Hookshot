@@ -1,50 +1,50 @@
 {
-    "format_version": "1.16.100",
-    "minecraft:item": {
-        "description": {
-            "identifier": "re_hookshot:hookshot",
-            "category": "Equipment"
-        },
-        "components": {
-            "minecraft:icon": {
-                "texture": "re_hookshot"
-            },
-            "minecraft:display_name": {
-                "value": "§6Re:Multi Hookshot"
-            },
-            "minecraft:hand_equipped": true,
-            "minecraft:can_destroy_in_creative": false,
-            "minecraft:max_stack_size": 1,
-            "minecraft:on_use": {
-                "on_use": {
-                    "condition": "query.scoreboard('HookshotLink') == 0",
-                    "event": "hookshot:use_item",
-                    "target": "self"
-                }
-            }
-        },
-        "events": {
-            "hookshot:use_item": {
-                "sequence": [
-                    {
-                        "shoot": {
-                            "projectile": "re_hookshot:hookshot_bullet",
-                            "launch_power": 1
-                        }
-                    },
-                    {
-                        "run_command": {
-                            "command": [
-                                "playsound random.door_open @s ~~~ 1 3 1",
-                                "playsound tile.piston.in @s ~~~",
-                                "tag @s add HookshotPlayer",
-                                "tag @s add Hookshot",
-                                "scoreboard players add @e[tag=Hookshot] HookshotLink 1"
-                            ]
-                        }
-                    }
-                ]
-            }
-        }
-    }
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "re_hookshot:hookshot",
+			"category": "Equipment"
+		},
+		"components": {
+			"minecraft:icon": {
+				"texture": "re_hookshot"
+			},
+			"minecraft:display_name": {
+				"value": "§6Re:Multi Hookshot§r"
+			},
+			"minecraft:hand_equipped": true,
+			"minecraft:can_destroy_in_creative": false,
+			"minecraft:max_stack_size": 1,
+			"minecraft:on_use": {
+				"on_use": {
+					"condition": "query.scoreboard('HookshotLink') == 0",
+					"event": "hookshot:use_item",
+					"target": "self"
+				}
+			}
+		},
+		"events": {
+			"hookshot:use_item": {
+				"sequence": [
+					{
+						"shoot": {
+							"projectile": "re_hookshot:hookshot_bullet",
+							"launch_power": 1
+						}
+					},
+					{
+						"run_command": {
+							"command": [
+								"playsound random.door_open @s ~~~ 1 3 1",
+								"playsound tile.piston.in @s ~~~",
+								"playsound open.iron_door @s ~~~ 1 1 1",
+								"tag @s add Hookshot",
+								"scoreboard players add @e[tag=Hookshot] HookshotLink 1"
+							]
+						}
+					}
+				]
+			}
+		}
+	}
 }
