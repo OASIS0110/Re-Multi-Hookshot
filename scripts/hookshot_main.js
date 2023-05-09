@@ -10,8 +10,8 @@ world.events.projectileHit.subscribe(ev => {
 		const hitBlock = ev.getBlockHit();
 
 		//ブロックに当たったら
-		if (hitBlock == undefined) {
-			//source.runCommandAsync(`tellraw @p {"rawtext": [{"text": "HitEntity:${hitEntity} Source:${source}"}]}`);
+		if (hitBlock !== undefined) {
+			source.sendMessage(`x:${x} y:${y} z:${z}`)
 		}
 	}
 });
@@ -19,5 +19,6 @@ world.events.projectileHit.subscribe(ev => {
 //Entityが撃たれた時
 world.events.entityHurt.subscribe(ev => {
 	const hurtEntity = ev.hurtEntity;
+	const source = ev.damageSource
 	hurtEntity.runCommandAsync(`tag @s add test`);
 })
