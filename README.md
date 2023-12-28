@@ -13,9 +13,9 @@
 ![License](https://custom-icon-badges.demolab.com/static/v1?style=for-the-badge&label=&message=CC%20BY-SA%204.0&color=5fbac9&labelColor=48729c&logo=law&logoColor=white&link=https%3A%2F%2Fcreativecommons.org%2Flicenses%2Fby-sa%2F4.0%2F)
 
 プレイヤーの移動をめちゃくちゃ快適にする便利ツールを追加します。
-</div></br>
+</div></br></br>
 
-<h1 align="center">前作からの改良点</h1>
+<h1 align="center">前作からの改良点</h1></br>
 
 - 前作、90%コマンド式であった『Multi Hookshot』をScript API(Java Script)を用いることで0から書き直し、様々なバグを修正、改善した。
 
