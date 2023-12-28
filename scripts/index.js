@@ -104,7 +104,7 @@ system.run(function tick() {
 				}
 				system.runTimeout(() => {
 					player.runCommandAsync('effect @s levitation 0 2 true')
-				},5)
+				}, 5)
 			}
 		}
 		else if (player.isOnGround === true) {
@@ -119,10 +119,10 @@ system.runInterval(() => {
 			player.runCommand('effect @s slow_falling 1 1 true');
 			system.runTimeout(() => {
 				player.runCommand('effect @s slow_falling 0 1 true');
-			},1)
+			}, 1)
 		}
 	}
-},3)
+}, 3)
 
 world.afterEvents.projectileHitEntity.subscribe(ev => {
 	const source = ev.source; // source entity (Entity)
@@ -162,10 +162,8 @@ world.afterEvents.projectileHitBlock.subscribe(ev => {
 	}
 	// re_hookshot:seatがブロックに当たったらkill
 	if (projectile.typeId === "re_hookshot:seat") {
-		for (const dimension of loadingDimension()) {
-			for (const entity of world.getDimension(dimension).getEntities()) {
-				if (entity.id === projectile.id) projectile.addTag('kill');
-			}
+		for (const entity of world.getDimension(projectile.dimension.id).getEntities()) {
+			if (entity.id === projectile.id) projectile.addTag('kill');
 		}
 	}
 })
