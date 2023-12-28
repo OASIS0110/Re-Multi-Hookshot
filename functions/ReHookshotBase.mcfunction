@@ -1,1 +1,0 @@
-execute as @e[type=re_hookshot:hookshot_bullet] at @s run particle minecraft:basic_crit_particle ~ ~ ~

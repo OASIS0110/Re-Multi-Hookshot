@@ -20,17 +20,13 @@
 			"version": [1, 0, 0],
 			"uuid": "adeaf0d3-78d7-4a06-96c4-beb5d9754cf1",
 			"language": "javascript",
-			"entry": "scripts/hookshot_main.js"
+			"entry": "scripts/index.js"
 		}
 	],
 	"dependencies": [
 		{
 			"module_name": "@minecraft/server",
-			"version": "1.2.0-beta"
-		},
-		{
-			"module_name": "@minecraft/server-ui",
-			"version": "1.0.0-beta"
+			"version": "1.8.0-beta"
 		}
 	],
 	"metadata": {
