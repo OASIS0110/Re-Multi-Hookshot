@@ -56,7 +56,7 @@
 			"minecraft:timer": {
 				"looping": false,
 				"randomInterval": false,
-				"time": [ 3.0, 3.0 ],
+				"time": [ 1.0, 1.0 ],
 				"time_down_event": {
 					"event": "instant_kill"
 				}
