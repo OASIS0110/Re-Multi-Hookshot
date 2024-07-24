@@ -102,13 +102,6 @@ system.runInterval(() => {
 	}
 })
 
-// 3tickごとに実行
-system.runInterval(() => {
-	// ロード中のディメンションに対して実行
-	for (const dimension of loadingDimension()) {
-	}
-},3)
-
 // hit entity
 world.afterEvents.projectileHitEntity.subscribe(ev => {
 	const hitEntity = ev.getEntityHit().entity;
