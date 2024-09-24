@@ -2,7 +2,7 @@
   "format_version": 2,
   "header": {
     "name": "Re Multi Hookshot",
-    "description": "フックショットが強化されて帰ってきた！\n\nMade by §bOASIS §f/ §6mc0110",
+    "description": "フックショットが強化されて帰ってきた！\nMade by §bOASIS §f/ §6mc0110 §7v.1.20.50~§r",
     "uuid": "69e5e8f1-6032-4753-98eb-29c9ca807f93",
     "version": [ 1, 0, 0 ],
     "min_engine_version": [ 1, 19, 80 ]
@@ -26,7 +26,7 @@
 	"dependencies": [
 		{
 			"module_name": "@minecraft/server",
-			"version": "1.12.0-beta"
+			"version": "2.0.0-alpha"
 		}
 	],
 	"metadata": {
